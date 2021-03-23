@@ -1,0 +1,25 @@
+.login {
+  background-color: #81cfe0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 0 auto;
+}
+
+button{
+  background: #f9690e;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  margin: 5px;
+}
+
+.login-button{
+  background: #f9690e;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  margin: 5px;
+}

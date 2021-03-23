@@ -1,0 +1,11 @@
+
+.main{
+  background-color: #81cfe0;
+}
+
+.tabs-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px 10px;
+}
