@@ -1,4 +1,5 @@
 import React from "react";
+import "../Main.css";
 
 function TabNav(props) {
   return (
@@ -8,13 +9,13 @@ function TabNav(props) {
           const active = tab === props.selected ? "active" : "";
 
           return (
-            <li className="nav-item" key={tab}>
-              <a
+            <li className="nav-item main-tabs" key={tab}>
+              <button
                 className={"nav-link " + active}
                 onClick={() => props.setSelected(tab)}
               >
                 {tab}
-              </a>
+              </button>
             </li>
           );
         })}

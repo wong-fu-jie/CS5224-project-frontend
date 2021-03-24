@@ -4,6 +4,8 @@ import Nav from "./Nav.js";
 import Tab from "./components/Tab.js";
 import TabNav from "./components/TabNav.js";
 import Recommend from "./components/Recommend.js";
+import Optimise from "./components/Optimise.js"
+import TripSearch from "./components/TripSearch.js"
 
 class Main extends React.Component {
   constructor(props) {
@@ -35,14 +37,10 @@ class Main extends React.Component {
               <Recommend />
             </Tab>
             <Tab isSelected={this.state.selected === "Optimise"}>
-              <h1>Some more Text</h1>
+              <Optimise />
             </Tab>
             <Tab isSelected={this.state.selected === "Search"}>
-              <ul>
-                <li> List test 1</li>
-                <li> List test 2</li>
-                <li> List test 3</li>
-              </ul>
+              <TripSearch />
             </Tab>
           </TabNav>
         </div>
