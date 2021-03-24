@@ -1,15 +1,16 @@
-
-.main{
+.main {
   background-color: #81cfe0;
-  flex-grow: 1;
-  width: 120vh;
-  display: flex;
-  flex-direction: column;
+  width: 150vh;
 }
 
-.tabs-box{
+.tabs-box {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-center;
+  flex-grow: 1;
   padding: 10px 10px;
+}
+
+.main-form {
+  margin: 5vh 0;
 }

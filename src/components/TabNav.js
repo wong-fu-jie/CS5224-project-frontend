@@ -2,7 +2,7 @@ import React from "react";
 
 function TabNav(props) {
   return (
-    <div style={{ width: "30%" }}>
+    <div style={{ width: "100%" }}>
       <ul className="nav nav-tabs">
         {props.tabs.map((tab) => {
           const active = tab === props.selected ? "active" : "";
