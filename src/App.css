@@ -1,25 +1,52 @@
-.login {
-  background-color: #81cfe0;
-  text-align: center;
+.App{
   display: flex;
   flex-direction: column;
-  width: 75%;
-  margin: 0 auto;
+  align-items: center;
 }
 
-button{
-  background: #f9690e;
-  font-size: 2em;
-  font-weight: bold;
-  color: white;
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  margin: auto;
+  background-color: #81cfe0;
+  padding-bottom: 100px;
+}
+
+.login-title {
+  display: inline-block;
+  background: #26a65b;
+  width: 100%;
+  height: 5rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+
+.login-label{
+  font-size: 1.5em;
   margin: 5px;
+  width: 10rem;
 }
 
 .login-button{
+  display: inline-block;
   background: #f9690e;
-  font-size: 1em;
+  font-size: 1.75em;
   font-weight: bold;
-  text-decoration: none;
   color: white;
-  margin: 5px;
+  width: 100%;
+  text-align: center;
+  margin: .5rem auto .1rem auto;
+  border-radius: .5rem;
+  padding: .5rem 5rem;
 }

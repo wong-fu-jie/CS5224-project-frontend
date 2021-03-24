@@ -1,6 +1,10 @@
 
 .main{
   background-color: #81cfe0;
+  flex-grow: 1;
+  width: 120vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .tabs-box{

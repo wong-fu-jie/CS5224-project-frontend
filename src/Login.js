@@ -8,24 +8,26 @@ function Login() {
   };
 
   return (
-    <div className="login" onSubmit={loginHandler}>
-      <h1>Delish & Delight!</h1>
-      <form>
+    <div className="login-box" onSubmit={loginHandler}>
+      <div className="login-title">
+        <h1>Delish & Delight!</h1>
+      </div>
+      <form className="login-form">
         <div>
-          <label>Username</label>
-          <input type="text" />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="text" />
-        </div>
-        <button type="submit">
-          <Link className="login-button" to={"/main"}>
-            Login
+          <div>
+            <label className="login-label">Username</label>
+            <input type="text" />
+          </div>
+          <div>
+            <label className="login-label">Password</label>
+            <input type="text" />
+          </div>
+          <Link className="login-button " to={"/main"}>
+            Sign In
           </Link>
-        </button>
+        </div>
       </form>
-      <a  href="/#">Forgot Password?</a>
+      <a href="/#">Forgot Password?</a>
     </div>
   );
 }

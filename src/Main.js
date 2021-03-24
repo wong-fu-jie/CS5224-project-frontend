@@ -20,12 +20,12 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='main'>
         <Nav
           title="Welcome!"
           subtitle="How would you like us to recommend your trip today?"
         />
-        <div className="main">
+        <div>
           <div className="tabs-box">
             <TabNav
               tabs={["Recommend", "Optimise", "Search"]}
