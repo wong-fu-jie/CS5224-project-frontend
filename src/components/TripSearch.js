@@ -14,16 +14,18 @@ function TripSearch() {
       </h3>
       <form class="main-form" onSubmit={searchSubmit}>
         <div class="form-group row justify-content-center">
-          <input class="col-lg-10 form-control-lg"
+          <input
+            class="col-lg-8 form-control-lg"
             type="search"
             id="searchInput"
             placeholder="Search Here"
           />
-          <button class="submit-button" type="submit">
-            Search!
-          </button>
+          <div class="col-lg-12 row justify-content-center">
+            <button class="submit-button" type="submit">
+              Search!
+            </button>
+          </div>
         </div>
-
       </form>
     </div>
   );

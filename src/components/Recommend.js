@@ -1,4 +1,5 @@
 import React from "react";
+import map from "./icons/map.png";
 
 function Recommend() {
   const recommendSubmit = (event) => {
@@ -6,11 +7,17 @@ function Recommend() {
     alert("Recommending!!!");
   };
 
+  const icon_style = {
+    width: "50px",
+    height: "50px",
+    marginLeft: "5px",
+  };
+
   return (
     <div>
       <h3>
-        Let us recommend you a plan! Just tell us where and how you want to start and
-        let us get to work!
+        Let us recommend you a plan! Just tell us where and how you want to
+        start and let us get to work!
       </h3>
       <form class="main-form" onSubmit={recommendSubmit}>
         <div class="form-group row">
@@ -43,11 +50,16 @@ function Recommend() {
             Where will you be starting your trip?
           </label>
           <div class="col-lg-5">
-            <input
+            <select
               type="search"
-              class="col-lg-12 form-control-lg"
+              class="col-lg-10 form-control-lg"
               id="travelFrom"
-            />
+            >
+              <option selected>
+                NUS School of Computing, 13 Computing Dr, S(117417)
+              </option>
+            </select>
+            <img style={icon_style} src={map} alt="map icon" />
           </div>
         </div>
         <button class="submit-button" type="submit">
