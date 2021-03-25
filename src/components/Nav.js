@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import profile from "./pics/profile.jpg";
+import profile from "../pics/profile.jpg";
 
 function Nav(props) {
   return (

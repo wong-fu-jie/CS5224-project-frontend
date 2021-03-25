@@ -1,6 +1,6 @@
 import React from "react";
 import "./Main.css";
-import Nav from "./Nav.js";
+import Nav from "./components/Nav.js";
 import Tab from "./components/Tab.js";
 import TabNav from "./components/TabNav.js";
 import Recommend from "./components/Recommend.js";

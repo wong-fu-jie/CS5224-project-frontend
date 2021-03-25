@@ -22,7 +22,7 @@ function Optimise() {
       <form class="main-form" onSubmit={optimiseSubmit}>
         <h5>Trip Information</h5>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="travelStartDate">Starting Date & Time</label>
             <input
               id="travelStartDate"
