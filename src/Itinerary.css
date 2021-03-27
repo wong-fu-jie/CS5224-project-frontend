@@ -2,3 +2,60 @@
   background-color: #81cfe0;
   width: 75%;
 }
+
+.itinerary .heading {
+  padding: 1.5%;
+}
+
+.itinerary-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-card {
+  min-height: 15vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border-bottom: 2px solid black;
+}
+
+.right-card {
+  min-height: 15vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border-bottom: 2px solid black;
+}
+
+.card-pic-div {
+  /align-self: flex-start;
+}
+
+.picture {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details .text {
+  padding: 0px 5px;
+}
+
+.details .bold {
+  font-weight: bold;
+}
