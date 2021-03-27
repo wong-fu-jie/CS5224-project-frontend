@@ -1,10 +1,14 @@
 import React from "react";
 import map from "./icons/map.png";
+import { useHistory } from "react-router-dom";
 
 function Recommend() {
+  let history = useHistory();
+
   const recommendSubmit = (event) => {
     event.preventDefault();
     alert("Recommending!!!");
+    history.push("/itinerary");
   };
 
   const icon_style = {
