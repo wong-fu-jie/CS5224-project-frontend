@@ -5,7 +5,7 @@ function RightCard(props) {
   return (
     <div className="right-card">
       <div>
-        <img className="picture" src={props.picture} alt="Mount Faber Park" />
+        <img className="picture" src={`./images/${props.picture}`} alt={props.name} />
       </div>
       <div className="details">
         <h5 className="text">{props.name}</h5>
@@ -18,7 +18,7 @@ function RightCard(props) {
           <p>{props.description}</p>
         </div>
 
-
+        
       </div>
     </div>
   );

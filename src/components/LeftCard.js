@@ -5,7 +5,7 @@ function LeftCard(props) {
   return (
     <div className="left-card">
       <div>
-        <img className="picture" src={props.picture} alt="Hort Park" />
+        <img className="picture" src={`./images/${props.picture}`} alt={props.name} />
       </div>
       <div className="details">
         <h5 className="text">{props.name}</h5>
