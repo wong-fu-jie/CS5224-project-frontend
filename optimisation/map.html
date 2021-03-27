@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4847e83121cb45918ead49ef31a47c46 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_4847e83121cb45918ead49ef31a47c46" ></div>
+        
+</body>
+<script>    
+    
+            var map_4847e83121cb45918ead49ef31a47c46 = L.map(
+                "map_4847e83121cb45918ead49ef31a47c46",
+                {
+                    center: [1.2791, 103.8154],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b2b3819936dc4494abe877215eb24ce6 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var marker_14ac56bfa66144d5bbded4fc2b76b4ca = L.marker(
+                [1.2949064295359, 103.77367779636],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_6ade7f9983f04e8193339dd96bd586fe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "flag", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_14ac56bfa66144d5bbded4fc2b76b4ca.setIcon(icon_6ade7f9983f04e8193339dd96bd586fe);
+        
+    
+        var popup_a1261372eba54568995a4731689c0ab0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_31e89cc7b917455e8d960e7d69db917e = $(`<div id="html_31e89cc7b917455e8d960e7d69db917e" style="width: 100.0%; height: 100.0%;"><strong>1. Walk to KENT RIDGE TER. Estimated distance is 0.73 km. 2. Take bus to HARBOURSIDE IND BLDG 2. Estimated distance is 4.03 km. 3. Walk to Destination. Estimated distance is 0.99 km. </strong></div>`)[0];
+            popup_a1261372eba54568995a4731689c0ab0.setContent(html_31e89cc7b917455e8d960e7d69db917e);
+        
+
+        marker_14ac56bfa66144d5bbded4fc2b76b4ca.bindPopup(popup_a1261372eba54568995a4731689c0ab0)
+        ;
+
+        
+    
+    
+            marker_14ac56bfa66144d5bbded4fc2b76b4ca.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_28eb8a5fc9124004bcd249c6ee8519fd = L.marker(
+                [1.2791094023419, 103.79944472002],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_f3998c9919954cbcb6c2b43b137585f9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_28eb8a5fc9124004bcd249c6ee8519fd.setIcon(icon_f3998c9919954cbcb6c2b43b137585f9);
+        
+    
+            var marker_c201f09f85844cf0804212591f14a5d5 = L.marker(
+                [1.28087089715, 103.80210333],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_52f2f41b1d5f4fb5aa1a6edaed69bc0a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c201f09f85844cf0804212591f14a5d5.setIcon(icon_52f2f41b1d5f4fb5aa1a6edaed69bc0a);
+        
+    
+        var popup_80ce5ccfd4ba472e813255257746a0a5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bf787ccf6eee41999099068242e5f328 = $(`<div id="html_bf787ccf6eee41999099068242e5f328" style="width: 100.0%; height: 100.0%;"><strong>1. Take bus to BLK 104A CP. Estimated distance is 3.07 km. 2. Take bus to BEF TELOK BLANGAH HTS. Estimated distance is 1.73 km. 3. Walk to Destination. Estimated distance is 0.05 km. </strong></div>`)[0];
+            popup_80ce5ccfd4ba472e813255257746a0a5.setContent(html_bf787ccf6eee41999099068242e5f328);
+        
+
+        marker_c201f09f85844cf0804212591f14a5d5.bindPopup(popup_80ce5ccfd4ba472e813255257746a0a5)
+        ;
+
+        
+    
+    
+            marker_c201f09f85844cf0804212591f14a5d5.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc17f52e47404bdfb8edb278d3f74da3 = L.marker(
+                [1.2756862081095, 103.81538080911],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_87920f1907da4ad4b9dd33e293617fe4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_bc17f52e47404bdfb8edb278d3f74da3.setIcon(icon_87920f1907da4ad4b9dd33e293617fe4);
+        
+    
+            var marker_dec2a7ce6fbe46d787af2468022138b6 = L.marker(
+                [1.2756862081095, 103.81538080911],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_86cba7ce84b0406d9bc8e82693417f9f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_dec2a7ce6fbe46d787af2468022138b6.setIcon(icon_86cba7ce84b0406d9bc8e82693417f9f);
+        
+    
+        var popup_3fc86b44ab004b87868ed7c5e02dc618 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_99b3bc443ff3405e84d53395ef32ddbc = $(`<div id="html_99b3bc443ff3405e84d53395ef32ddbc" style="width: 100.0%; height: 100.0%;"><strong>1. Walk to Destination. Estimated distance is 0.88 km. </strong></div>`)[0];
+            popup_3fc86b44ab004b87868ed7c5e02dc618.setContent(html_99b3bc443ff3405e84d53395ef32ddbc);
+        
+
+        marker_dec2a7ce6fbe46d787af2468022138b6.bindPopup(popup_3fc86b44ab004b87868ed7c5e02dc618)
+        ;
+
+        
+    
+    
+            marker_dec2a7ce6fbe46d787af2468022138b6.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e17cb4adceb4288a5ecb8821255e193 = L.marker(
+                [1.273823541683, 103.8092973279],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_acf57e8643704348b07f1ad156306f9f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_9e17cb4adceb4288a5ecb8821255e193.setIcon(icon_acf57e8643704348b07f1ad156306f9f);
+        
+    
+            var marker_32b00f7ec73944c3a7d277541d1acdff = L.marker(
+                [1.273823541683, 103.8092973279],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_e1aca07d1601429bbd24ea63565f62d6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_32b00f7ec73944c3a7d277541d1acdff.setIcon(icon_e1aca07d1601429bbd24ea63565f62d6);
+        
+    
+        var popup_d2fdfe0ec36d4afea13f42699734bb26 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5b300e66072347d0a1ca1b2371f3f85e = $(`<div id="html_5b300e66072347d0a1ca1b2371f3f85e" style="width: 100.0%; height: 100.0%;"><strong>1. Walk to path. Estimated distance is 0.38 km. 2. Walk to TELOK BLANGAH MRT STATION. Estimated distance is 0.07 km. 3. Take subway to HARBOURFRONT MRT STATION. Estimated distance is 1.44 km. 4. Walk to HARBOURFRONT MRT STATION. Estimated distance is 0.0 km. 5. Take subway to CHINATOWN MRT STATION. Estimated distance is 3.2 km. 6. Walk to NEW BRIDGE CTR. Estimated distance is 0.15 km. 7. Walk to Destination. Estimated distance is 0.33 km. </strong></div>`)[0];
+            popup_d2fdfe0ec36d4afea13f42699734bb26.setContent(html_5b300e66072347d0a1ca1b2371f3f85e);
+        
+
+        marker_32b00f7ec73944c3a7d277541d1acdff.bindPopup(popup_d2fdfe0ec36d4afea13f42699734bb26)
+        ;
+
+        
+    
+    
+            marker_32b00f7ec73944c3a7d277541d1acdff.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ed6b66519dbf4cf5b4a664287af12ce4 = L.marker(
+                [1.2814272873608, 103.84423200277],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_aaac5f6a8afc4d679be7c861dd5f0498 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ed6b66519dbf4cf5b4a664287af12ce4.setIcon(icon_aaac5f6a8afc4d679be7c861dd5f0498);
+        
+    
+            var marker_d02b257791f3496e9ef5f5209ffa356d = L.marker(
+                [1.2814272873608, 103.84423200277],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_bf92f0926c82465db0266c1998a08c04 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d02b257791f3496e9ef5f5209ffa356d.setIcon(icon_bf92f0926c82465db0266c1998a08c04);
+        
+    
+        var popup_1ea28a00f6d24f19b458777a7d3504bd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_175b710f64764eb6bac1e87071b7c77d = $(`<div id="html_175b710f64764eb6bac1e87071b7c77d" style="width: 100.0%; height: 100.0%;"><strong>1. Walk to Destination. Estimated distance is 0.27 km. </strong></div>`)[0];
+            popup_1ea28a00f6d24f19b458777a7d3504bd.setContent(html_175b710f64764eb6bac1e87071b7c77d);
+        
+
+        marker_d02b257791f3496e9ef5f5209ffa356d.bindPopup(popup_1ea28a00f6d24f19b458777a7d3504bd)
+        ;
+
+        
+    
+    
+            marker_d02b257791f3496e9ef5f5209ffa356d.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ff9e6203ddc4f72a992d2dcc5e8c5e7 = L.marker(
+                [1.2827437958689, 103.8431670117],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_73efc9a45e184291ae089da259ec3e27 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6ff9e6203ddc4f72a992d2dcc5e8c5e7.setIcon(icon_73efc9a45e184291ae089da259ec3e27);
+        
+    
+            var marker_5d178d15fa69406fa6a2c298639cf2d1 = L.marker(
+                [1.2827437958689, 103.8431670117],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_8abac24e9a1f4229bdc3e76f492ec819 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "trophy", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_5d178d15fa69406fa6a2c298639cf2d1.setIcon(icon_8abac24e9a1f4229bdc3e76f492ec819);
+        
+    
+        var popup_7f880473242e4fcc80fcb7658ac1fb81 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_75ff47f75b5e41aba4df2d98b162ed2e = $(`<div id="html_75ff47f75b5e41aba4df2d98b162ed2e" style="width: 100.0%; height: 100.0%;"><strong>1. Walk to path. Estimated distance is 0.09 km. 2. Walk to CHINATOWN MRT STATION. Estimated distance is 0.15 km. 3. Take subway to DHOBY GHAUT MRT STATION. Estimated distance is 1.86 km. 4. Walk to DHOBY GHAUT MRT STATION. Estimated distance is 0.17 km. 5. Walk to Destination. Estimated distance is 0.43 km. </strong></div>`)[0];
+            popup_7f880473242e4fcc80fcb7658ac1fb81.setContent(html_75ff47f75b5e41aba4df2d98b162ed2e);
+        
+
+        marker_5d178d15fa69406fa6a2c298639cf2d1.bindPopup(popup_7f880473242e4fcc80fcb7658ac1fb81)
+        ;
+
+        
+    
+    
+            marker_5d178d15fa69406fa6a2c298639cf2d1.bindTooltip(
+                `<div>
+                     Click For More Info
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6dd130fb31224241a62b82513107eebb = L.marker(
+                [1.2966263915816, 103.848509901],
+                {}
+            ).addTo(map_4847e83121cb45918ead49ef31a47c46);
+        
+    
+            var icon_de2ef557ee044a369c5a32684173ebb6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6dd130fb31224241a62b82513107eebb.setIcon(icon_de2ef557ee044a369c5a32684173ebb6);
+        
+    
+
+        function geo_json_02ca83ac0be94ebd819d665b04fe3ed3_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_02ca83ac0be94ebd819d665b04fe3ed3 = L.geoJson(null, {
+                onEachFeature: geo_json_02ca83ac0be94ebd819d665b04fe3ed3_onEachFeature,
+            
+        });
+
+        function geo_json_02ca83ac0be94ebd819d665b04fe3ed3_add (data) {
+            geo_json_02ca83ac0be94ebd819d665b04fe3ed3
+                .addData(data)
+                .addTo(map_4847e83121cb45918ead49ef31a47c46);
+        }
+            geo_json_02ca83ac0be94ebd819d665b04fe3ed3_add({"features": [{"geometry": {"coordinates": [[[103.773678, 1.294906], [103.769883, 1.294253], [103.79674, 1.274815], [103.799445, 1.279109]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}, {"geometry": {"coordinates": [[[103.802103, 1.280871], [103.821832, 1.288588], [103.815144, 1.275375], [103.815381, 1.275686]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}, {"geometry": {"coordinates": [[[103.809297, 1.273824], [103.815381, 1.275686]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}, {"geometry": {"coordinates": [[[103.809297, 1.273824], [103.809418, 1.271186], [103.809762, 1.270706], [103.82153, 1.265389], [103.82153, 1.265389], [103.84325, 1.284095], [103.842543, 1.282938], [103.844232, 1.281427]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}, {"geometry": {"coordinates": [[[103.844232, 1.281427], [103.843167, 1.282744]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}, {"geometry": {"coordinates": [[[103.843167, 1.282744], [103.842543, 1.282938], [103.84325, 1.284095], [103.845376, 1.299621], [103.84673, 1.298805], [103.84851, 1.296626]]], "type": "MultiLineString"}, "properties": {"stroke": "#AF4646"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+</script>
