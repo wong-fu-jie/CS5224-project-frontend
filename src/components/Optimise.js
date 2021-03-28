@@ -13,39 +13,40 @@ function Optimise() {
     marginLeft: "5px",
   };
 
+
   return (
     <div>
       <h3>
         Provide us with some information and let us help personalise an
         itenerary for you.
       </h3>
-      <form class="main-form" onSubmit={optimiseSubmit}>
+      <form className="main-form" onSubmit={optimiseSubmit}>
         <h5>Trip Information</h5>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="travelStartDate">Starting Date & Time</label>
+        <div className="form-row">
+          <div className="form-group col-md-4">
+            <label htmlFor="travelStartDate">Starting Date & Time</label>
             <input
               id="travelStartDate"
               type="datetime-local"
-              class="form-control"
+              className="form-control"
             />
           </div>
-          <div class="form-group col-md-6">
-            <label for="travelLength">Travelling Time</label>
-            <div class="form-inline">
+          <div className="form-group col-md-6">
+            <label htmlFor="travelLength">Travelling Time</label>
+            <div className="form-inline">
               <input
                 id="travelLength"
                 type="number"
-                class="col-md-6 form-control"
+                className="col-md-6 form-control"
               />
-              <label class="col-md-1">Hours</label>
+              <label className="col-md-1">Hours</label>
             </div>
           </div>
-          <div class="form-group col-md-8">
-            <label for="travelFrom">Starting Location</label>
-            <div class="form-inline">
-              <select id="travelForm" class="form-control">
-                <option selected>
+          <div className="form-group col-md-8">
+            <label htmlFor="travelFrom">Starting Location</label>
+            <div className="form-inline">
+              <select id="travelForm" className="form-control">
+                <option value='1'>
                   NUS School of Computing, 13 Computing Dr, S(117417)
                 </option>
               </select>
@@ -54,32 +55,32 @@ function Optimise() {
           </div>
         </div>
         <h5>Your Travel Preferences</h5>
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="travelPace">Travel Pace</label>
-            <select id="travelPace" class="form-control">
-              <option>Slow</option>
-              <option>Normal</option>
-              <option selected>Fast</option>
+        <div className="form-row">
+          <div className="form-group col-md-4">
+            <label htmlFor="travelPace">Travel Pace</label>
+            <select id="travelPace" className="form-control" defaultValue='2'>
+              <option value='1'>Slow</option>
+              <option value='2'>Normal</option>
+              <option value='3'>Fast</option>
             </select>
           </div>
-          <div class="form-group col-md-4">
-            <label for="travelFood">Are you a foodie?</label>
-            <select id="travelFood" class="form-control">
-              <option  selected>Live to Eat</option>
-              <option>Eat to Live</option>
+          <div className="form-group col-md-4">
+            <label htmlFor="travelFood">Are you a foodie?</label>
+            <select id="travelFood" className="form-control" defaultValue='1'>
+              <option value='1'>Live to Eat</option>
+              <option value='2'>Eat to Live</option>
             </select>
           </div>
-          <div class="form-group col-md-4">
-            <label for="poiInterests">POI Interests</label>
-            <select id="poiInterests" class="form-control">
-              <option  selected>Sights & Sounds</option>
-              <option>Action Oriented</option>
-              <option>Shopping!</option>
+          <div className="form-group col-md-4">
+            <label htmlFor="poiInterests">POI Interests</label>
+            <select id="poiInterests" className="form-control" defaultValue='3'>
+              <option value='1'>Sights & Sounds</option>
+              <option value='2'>Action Oriented</option>
+              <option value='3'>Shopping!</option>
             </select>
           </div>
         </div>
-        <button class="submit-button" type="submit">Optimise!</button>
+        <button className="submit-button" type="submit">Optimise!</button>
       </form>
     </div>
   );

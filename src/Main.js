@@ -4,8 +4,8 @@ import Nav from "./components/Nav.js";
 import Tab from "./components/Tab.js";
 import TabNav from "./components/TabNav.js";
 import Recommend from "./components/Recommend.js";
-import Optimise from "./components/Optimise.js"
-import TripSearch from "./components/TripSearch.js"
+import Optimise from "./components/Optimise.js";
+import TripSearch from "./components/TripSearch.js";
 
 class Main extends React.Component {
   constructor(props) {

@@ -12,16 +12,16 @@ function TripSearch() {
         Search our database of places to travel to by typing in some key words
         below.
       </h3>
-      <form class="main-form" onSubmit={searchSubmit}>
-        <div class="form-group row justify-content-center">
+      <form className="main-form" onSubmit={searchSubmit}>
+        <div className="form-group row justify-content-center">
           <input
-            class="col-lg-8 form-control-lg"
+            className="col-lg-8 form-control-lg"
             type="search"
             id="searchInput"
             placeholder="Search Here"
           />
-          <div class="col-lg-12 row justify-content-center">
-            <button class="submit-button" type="submit">
+          <div className="col-lg-12 row justify-content-center">
+            <button className="submit-button" type="submit">
               Search!
             </button>
           </div>
