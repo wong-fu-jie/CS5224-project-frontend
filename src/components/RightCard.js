@@ -14,11 +14,13 @@ function RightCard(props) {
           <label className="text bold">{props.travelTime}</label>
           <label className="text">show map</label>
         </div>
+        <div>
+          <label className="text bold">Time to Spend Here:</label>
+          <label className="text bold">{props.spendTime}</label>
+        </div>
         <div className="text">
           <p>{props.description}</p>
         </div>
-
-
       </div>
     </div>
   );
