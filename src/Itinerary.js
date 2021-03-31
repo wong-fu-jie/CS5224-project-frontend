@@ -18,7 +18,7 @@ function Itinerary() {
         }
       })
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.loading === "no") {
           setLoading(false);
           setTravelPlan(data.itinerary);
@@ -28,16 +28,20 @@ function Itinerary() {
 
   useEffect(() => {
     let interval = null;
-    if(loading){
+    if (loading) {
       interval = setInterval(() => {
-        setLoadCount(prevLoadCount => prevLoadCount + 1);
-      }, 2000)
+        setLoadCount((prevLoadCount) => prevLoadCount + 1);
+      }, 2000);
     } else {
       clearInterval(interval);
       setLoadCount(0);
     }
-    return () => clearInterval(interval)
-  }, [loading])
+    return () => clearInterval(interval);
+  }, [loading]);
+
+  const ShowMapRedirect = () => {
+    window.location.replace("http://54.242.57.43:8080/optimisation");
+  };
 
   const RenderContent = (isLoading) => {
     if (loading) {
@@ -52,8 +56,13 @@ function Itinerary() {
           <h4 className="heading">
             "Here's your travel plan. We hope you are delighted with it!"
           </h4>
-          <div>
-            <h6>Starting From: NUS School of Computing</h6>
+          <div className="start-location">
+            <div>
+              <h5>Starting From: NUS School of Computing</h5>
+            </div>
+            <button className="map-button" onClick={ShowMapRedirect}>
+              Show Map
+            </button>
           </div>
           {travelPlan.map((plan) => {
             if (plan.id % 2 === 1) {
@@ -63,6 +72,7 @@ function Itinerary() {
                   picture={plan.picture}
                   name={plan.name}
                   travelTime={plan.travelTime}
+                  spendTime={plan.spendTime}
                   description={plan.description}
                 />
               );
@@ -73,6 +83,7 @@ function Itinerary() {
                   picture={plan.picture}
                   name={plan.name}
                   travelTime={plan.travelTime}
+                  spendTime={plan.spendTime}
                   description={plan.description}
                 />
               );

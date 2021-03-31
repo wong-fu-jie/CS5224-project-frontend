@@ -13,6 +13,21 @@
   align-items: center;
 }
 
+.start-location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-button {
+  background: #f9690e;
+  font-weight: bolder;
+  color: white;
+  font-size: 1.25em;
+  padding: 0 1.5em;
+  margin: auto 0.5em;
+}
+
 .left-card {
   min-height: 15vh;
   overflow: hidden;
@@ -40,9 +55,9 @@
 }
 
 .picture {
-    width: 175px;
-    height: 175px;
-    margin: 10px;
+  width: 175px;
+  height: 175px;
+  margin: 10px;
 }
 
 .details {

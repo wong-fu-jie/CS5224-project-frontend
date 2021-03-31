@@ -12,7 +12,6 @@ function RightCard(props) {
         <div>
           <label className="text bold">Travel Time:</label>
           <label className="text bold">{props.travelTime}</label>
-          <label className="text">show map</label>
         </div>
         <div>
           <label className="text bold">Time to Spend Here:</label>
