@@ -5,8 +5,12 @@ import uuid
 class FrontEnd(object):
 
     def __init__(self):
-        self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost'))
+
+        parameters = pika.URLParameters('amqps://Administrator:administrator123@b-8894e7fb-ac9c-4657-8912-473a0bf03efa.mq.us-east-1.amazonaws.com:5671/%2f')
+        self.connection = pika.BlockingConnection(parameters)
+
+        # self.connection = pika.BlockingConnection(
+        #     pika.ConnectionParameters(host='localhost'))
 
         self.channel = self.connection.channel()
 
@@ -28,7 +32,7 @@ class FrontEnd(object):
         self.corr_id = str(uuid.uuid4())
         self.channel.basic_publish(
             exchange='',
-            routing_key='frontend_optimisation',
+            routing_key='frontend_recommendation',
             properties=pika.BasicProperties(
                 reply_to=self.callback_queue,
                 correlation_id=self.corr_id,
@@ -38,9 +42,9 @@ class FrontEnd(object):
             self.connection.process_data_events()
         return int(self.response)
 
-
 frontend_client = FrontEnd()
 
-print(" [x] Requesting fib(2)")
-response = frontend_client.call(2)
+n = 4
+print(" [x] Requesting fib({})".format(n))
+response = frontend_client.call(n)
 print(" [.] Got %r" % response)

@@ -6,11 +6,15 @@ class Recommendation(object):
 
     def __init__(self):
 
-        self.connection1 = pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost'))
+        parameters = pika.URLParameters('amqps://Administrator:administrator123@b-8894e7fb-ac9c-4657-8912-473a0bf03efa.mq.us-east-1.amazonaws.com:5671/%2f')
+        self.connection1 = pika.BlockingConnection(parameters)
+        self.connection2 = pika.BlockingConnection(parameters)
 
-        self.connection2 = pika.BlockingConnection(
-            pika.ConnectionParameters(host='localhost'))
+        # self.connection1 = pika.BlockingConnection(
+        #     pika.ConnectionParameters(host='localhost'))
+
+        # self.connection2 = pika.BlockingConnection(
+        #     pika.ConnectionParameters(host='localhost'))
 
         self.channel1 = self.connection1.channel()
 
@@ -51,8 +55,7 @@ class Recommendation(object):
 
         ch.basic_publish(exchange='',
                         routing_key=props.reply_to,
-                        properties=pika.BasicProperties(correlation_id = \
-                                                            props.correlation_id),
+                        properties=pika.BasicProperties(correlation_id = props.correlation_id),
                         body=str(response))
 
         ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -62,15 +65,17 @@ class Recommendation(object):
         self.response = None
         self.corr_id = str(uuid.uuid4())
 
-        print(" [.] Requesting for fib(%s) to OneMap API" % n)
         self.channel2.basic_publish(
             exchange='',
-            routing_key='recommendation_optimisation',
+            routing_key='optimisation_recommendation',
             properties=pika.BasicProperties(
                 reply_to=self.callback_queue2,
                 correlation_id=self.corr_id,
             ),
             body=str(n))
+
+        print(" [.] Requesting for fib(%s) to Optimisation Server" % n)
+
         while self.response is None:
             self.connection2.process_data_events()
 
