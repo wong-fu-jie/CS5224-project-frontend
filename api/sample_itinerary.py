@@ -1,7 +1,7 @@
 itinerary = [
     {
         "id": 1,
-        "picture": "hort-park.jpg",
+        # "picture": "hort-park.jpg",
         "name": "Hort Park",
         "travelTime": "20 mins",
         "spendTime": "1 hour",
@@ -10,7 +10,7 @@ itinerary = [
     },
     {
         "id": 2,
-        "picture": "mount-faber.jpg",
+        # "picture": "mount-faber.jpg",
         "name": "Mount Faber Park",
         "travelTime": "15 mins",
         "spendTime": "1.5 hours",
@@ -19,7 +19,7 @@ itinerary = [
     },
     {
         "id": 3,
-        "picture": "telok-blangah-food-centre.jpg",
+        # "picture": "telok-blangah-food-centre.jpg",
         "name": "Telok Blangah Food Centre",
         "travelTime": "10 mins",
         "spendTime": "45 mins",
@@ -28,7 +28,7 @@ itinerary = [
     },
     {
         "id": 4,
-        "picture": "chinatown.jpg",
+        # "picture": "chinatown.jpg",
         "name": "Chinatown",
         "travelTime": "40 mins",
         "spendTime": "2 hours",
@@ -36,7 +36,7 @@ itinerary = [
     },
     {
         "id": 5,
-        "picture": "chinatown-food-centre.jpg",
+        # "picture": "chinatown-food-centre.jpg",
         "name": "Chinatown Food Centre",
         "travelTime": "20 mins",
         "spendTime": "1 hour",
@@ -44,7 +44,7 @@ itinerary = [
     },
     {
         "id": 6,
-        "picture": "national-museum.jpg",
+        # "picture": "national-museum.jpg",
         "name": "National Museum of Singapore",
         "travelTime": "30 mins",
         "spendTime": "1.5 hours",

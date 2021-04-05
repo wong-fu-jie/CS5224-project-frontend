@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "cd api && venv/Scripts/flask run --no-debugger",
+    "start-api": "cd api && virt/Scripts/flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -41,5 +41,12 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://projectdd-env.eba-ny7u22vm.us-east-1.elasticbeanstalk.com"
+
+  "proxy": "http://localhost:5000",
+
+  "comments": {
+    "proxy-local": "http://localhost:5000",
+    "proxy-local-build": "http://localhost:8000",
+    "proxy-aws": "http://projectdd-env.eba-ny7u22vm.us-east-1.elasticbeanstalk.com"
+  }
 }

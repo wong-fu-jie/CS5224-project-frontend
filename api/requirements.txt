@@ -3,6 +3,8 @@ Flask==1.1.2
 itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
+pika==1.2.0
 python-dotenv==0.16.0
+uuid==1.30
 waitress==2.0.0
 Werkzeug==1.0.1

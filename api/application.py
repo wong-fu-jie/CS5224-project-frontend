@@ -1,18 +1,25 @@
 import time
-from flask import Flask, jsonify, request, json
+from flask import Flask, jsonify, request, json, session
+from flask_session import Session
 
 from sample_itinerary import *
+from location_picture_files import *
 
 import pika
 import uuid
 
 app = Flask(__name__)
+SESSION_TYPE = 'filesystem'
+app.config.from_object(__name__)
+Session(app)
+
 
 class FrontEnd(object):
 
     def __init__(self):
 
-        parameters = pika.URLParameters('amqps://Administrator:administrator123@b-8894e7fb-ac9c-4657-8912-473a0bf03efa.mq.us-east-1.amazonaws.com:5671/%2f')
+        parameters = pika.URLParameters(
+            'amqps://Administrator:administrator123@b-8894e7fb-ac9c-4657-8912-473a0bf03efa.mq.us-east-1.amazonaws.com:5671/%2f')
         self.connection = pika.BlockingConnection(parameters)
 
         # self.connection = pika.BlockingConnection(
@@ -48,35 +55,65 @@ class FrontEnd(object):
             self.connection.process_data_events()
         return list(self.response)
 
+
 @app.route('/')
 def home():
+    session['itinerary'] = []
     return "ok"
 
 
-@app.route('/api/time', methods=['GET'])
+@ app.route('/api/time', methods=['GET'])
 def get_current_time():
     return {'time': time.time()}
 
 
-@app.route('/api/recommend', methods=['POST'])
+def insert_location_picture(location):
+    if not location:
+        location_pic_data = get_location_pic_data()
+
+        location_name = location['name']
+        location['picture'] = location_pic_data[location_name]
+
+    return location
+
+
+def save_recommended_itinerary(itinerary):
+    itinerary_with_pic = []
+
+    for location in itinerary:
+        location_with_pic = insert_location_picture(location)
+        itinerary_with_pic.append(location)
+
+    session['itinerary'] = itinerary_with_pic
+
+
+@ app.route('/api/recommend', methods=['POST'])
 def submit_recommend():
-    request_data = json.loads(request.data)
+    # Send message to AmazonMQ and wait for response
+    try:
+        request_data = json.loads(request.data)
+        frontend_client = FrontEnd()
+        response = frontend_client.call(request_data)
+        save_recommended_itinerary(response)
 
-    frontend_client = FrontEnd()
-    
-    response = frontend_client.call(request_data)
+    except:
+        empty_itinerary = {}
+        save_recommended_itinerary(empty_itinerary)
 
-    # Publish recommend message
+    # Testing with sample
+    # save_recommended_itinerary(get_sample_itinerary())
+    finally:
+        return {'200': 'Running recommendation engine'}
 
-    return {'200': 'Running recommendation engine'}
+
+def get_itineary_content():
+    return session['itinerary']
 
 
-@app.route('/api/itinerary', methods=['GET'])
-def get_itinerary():
+@ app.route('/api/itinerary', methods=['GET'])
+def get_itinerary_plan():
     loading = "no"
-    itinerary = get_sample_itinerary()
-
-    # Subscribed for message for itinerary created
+    itinerary = get_itineary_content()
 
     return_dict = {
         "loading": loading,
