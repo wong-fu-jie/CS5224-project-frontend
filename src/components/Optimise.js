@@ -74,9 +74,12 @@ function Optimise() {
           <div className="form-group col-md-4">
             <label htmlFor="poiInterests">POI Interests</label>
             <select id="poiInterests" className="form-control" defaultValue='3'>
-              <option value='1'>Sights & Sounds</option>
-              <option value='2'>Action Oriented</option>
-              <option value='3'>Shopping!</option>
+              <option value='1'>Adventure</option>
+              <option value='2'>Arts</option>
+              <option value='3'>History & Culture</option>
+              <option value='4'>Leisure & Recreation</option>
+              <option value='5'>Nature & Wildlife</option>
+              <option value='6'>Others</option>
             </select>
           </div>
         </div>

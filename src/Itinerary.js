@@ -40,7 +40,7 @@ function Itinerary() {
   }, [loading]);
 
   const ShowMapRedirect = () => {
-    window.location.replace("http://54.242.57.43:8080/optimisation");
+    window.location.replace("http://34.207.205.251:8080/map");
   };
 
   const RenderContent = (isLoading) => {
