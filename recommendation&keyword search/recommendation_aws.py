@@ -1,6 +1,19 @@
-import pandas as pd
 import numpy as np
+from flask import Flask
 import json
+import psycopg2
+import pandas.io.sql as sqlio
+import pandas as pd
+
+def db_init():
+    engine = psycopg2.connect(
+    database="demo_1",
+    user="postgres",
+    password="Huxjoffer2021!",
+    host="database-1-test.ctpfk8jpyqbl.us-east-1.rds.amazonaws.com",
+    port='5432')
+    return engine
+
 
 def get_similarity(vector1, vector2):
     avg1 = np.nanmean(vector1)
@@ -22,17 +35,20 @@ def get_sim_list(vector,user_item_list):
     return sim_list
 
 def get_user_feature_matrix(userid):
-    review_df = pd.read_excel('review.xlsx')
-    profile_df = pd.read_excel('user_profile.xlsx')
-    user_item = pd.pivot_table(review_df, values='rating', index=['UserID'],columns=['uuid'])
+    engine = db_init()
+    postgreSQL_select_Query = 'select * from review'
+    review_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
+    postgreSQL_select_Query = 'select * from user_profile'
+    profile_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
+    user_item = pd.pivot_table(review_df, values='rating', index=['userid'],columns=['uuid'])
     profile_df['occupation'] = 'occ_'+profile_df['occupation']
     profile_df['nationality'] = 'nation_'+profile_df['nationality']
     occupation_df = pd.get_dummies(profile_df.occupation)
     nation_df = pd.get_dummies(profile_df.nationality)
     profile_onehot = pd.concat([occupation_df,nation_df],axis=1)
     profile_onehot['age'] = profile_df['age']
-    profile_onehot['UserID'] = profile_df['UserID']
-    profile_onehot = profile_onehot.set_index('UserID')
+    profile_onehot['userid'] = profile_df['userid']
+    profile_onehot = profile_onehot.set_index('userid')
     user_item = user_item.join(profile_onehot)
     user_item['age'] = (user_item['age']-user_item['age'].mean())/user_item['age'].std()
     return user_item
@@ -58,7 +74,9 @@ def get_recommendation(userid):
         recommended_places = [i[0] for i in recommended_places]
     else:
         recommended_places = [i[0] for i in recommended_places]
-    attraction_df = pd.read_excel('attraction.xlsx')
+    engine = db_init()
+    postgreSQL_select_Query = 'select * from attraction'
+    attraction_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
     recommended_df = pd.DataFrame()
     for place in recommended_places:
         current_df = attraction_df[attraction_df['uuid']==place]
@@ -66,10 +84,30 @@ def get_recommendation(userid):
     recommended_df['rank'] = np.arange(len(recommended_df))
     recommended_df['pace'] = pd.cut(recommended_df['rank'],3,labels=[1.5,1,0.75])
     recommended_df['pace'] = recommended_df['pace'].astype(float)
-    recommended_df['recommended time stay (h)'] = recommended_df['Average Stay Time (h)']*recommended_df['pace']
+    recommended_df['recommended time stay (h)'] = recommended_df['avg_stay_time']*recommended_df['pace']
     recommended_df = recommended_df[['name','description','recommended time stay (h)']]
     return recommended_df
 
-if __name__ == '__main__':
+# initialise app
+app=Flask(__name__)
+
+@app.route("/recommendation",methods=['GET','POST'])
+def recommend():
     location_list = get_recommendation(1)
-    print(location_list)
+    j_file = json.dumps(location_list.to_dict())
+    return j_file
+
+@app.route("/")
+def home():
+    return "<h1>Hello World</h1>"
+
+# entrance
+if __name__=='__main__':
+    app.run(host='0.0.0.0',port=8080)
+
+# if __name__=='__main__':
+#     app.run(debug=True)
+
+# if __name__ == '__main__':
+#     location_list = get_recommendation(1)
+#     print(location_list)
