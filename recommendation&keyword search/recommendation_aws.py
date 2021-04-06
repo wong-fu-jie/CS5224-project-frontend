@@ -167,8 +167,8 @@ def home():
 #     app.run(debug=True)
 
 if __name__ == '__main__':
-    location_list = get_recommendation(1,1,1,1)
-    print(location_list)
-    # optimization_dict = demo_recommendation(1,'COM3, NUS',8,'2021-4-10')
-    # with open('location_list.json','w') as f:
-    #     json.dump(optimization_dict,f)
+    # location_list = get_recommendation(1,1,1,1)
+    # print(location_list)
+    optimization_dict = demo_recommendation(1,'COM1, NUS',8,'2021-4-10')
+    with open('location_list.json','w') as f:
+        json.dump(optimization_dict,f)
