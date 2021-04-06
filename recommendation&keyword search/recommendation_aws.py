@@ -52,9 +52,10 @@ def get_user_feature_matrix(userid):
     engine = db_init()
     postgreSQL_select_Query = 'select * from review'
     review_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
-    # postgreSQL_select_Query = 'select * from user_profile'
-    # profile_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
-    profile_df = pd.read_excel('user_profile.xlsx')
+    postgreSQL_select_Query = 'select * from user_profile'
+    profile_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
+    # profile_df = pd.read_excel('user_profile.xlsx')
+    # exclude the user with missing values for preference, pace and foodie
     profile_df = profile_df[~profile_df.isnull().any(axis=1)]
     # convert review_df to pivot table
     user_item = pd.pivot_table(review_df, values='rating', index=['userid'],columns=['uuid'])
@@ -117,8 +118,8 @@ def get_recommendation(userid,start_loc,time_stay,start_time):
     # infer user's POI preference, travel pace and foodie based on the similar users
     similar_user_id = similar_users.index
     similar_user_profile = profile_df[profile_df['userid'].isin(similar_user_id)]
-    POI_preference1 = similar_user_profile['POI_preference1'].mode()[0]
-    POI_preference2 = similar_user_profile[similar_user_profile['POI_preference1']!=POI_preference1]['POI_preference2'].mode()[0]
+    POI_preference1 = similar_user_profile['poi_preference1'].mode()[0]
+    POI_preference2 = similar_user_profile[similar_user_profile['poi_preference1']!=POI_preference1]['poi_preference2'].mode()[0]
     travel_pace = similar_user_profile['pace'].mode()[0]
     foodie = similar_user_profile['foodie'].mode()[0]
     optimization_dict = {'start_loc': start_loc,
