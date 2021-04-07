@@ -275,9 +275,11 @@ def on_request(ch, method, props, body):
 
     msg = dict(body)
 
-    # print(" [.] fib(%s)" % n)
+    print(' [x] Got the message {}'.format(msg))
     response = optimisation(msg)
 
+    print(' [x] Optimisation done! Sending {} to front_end now!'.format(response))
+    
     ch.basic_publish(exchange='',
                      routing_key=props.reply_to,
                      properties=pika.BasicProperties(correlation_id = \
