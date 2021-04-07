@@ -229,7 +229,7 @@ class Recommendation(object):
             ),
             body=str(n))
 
-        print(" [.] Request consisting {} sent to Optimisation Server".format(body.decode()))
+        print(" [.] Request consisting {} sent to Optimisation Server".format(n))
 
         while self.response is None:
             self.connection2.process_data_events()
