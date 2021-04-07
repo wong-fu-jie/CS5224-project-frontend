@@ -12,6 +12,7 @@ import geojson
 from geojson import Feature, FeatureCollection, MultiLineString
 from flask import Flask, request, render_template
 
+import pika
 
 def db_init(poi_list):
     engine = psycopg2.connect(
@@ -232,15 +233,16 @@ app = Flask(__name__)
 
 
 @app.route("/optimisation", methods=['GET', 'POST'])
-def optimisation():
+def optimisation(rec_output_dict):
     # poi_list=['COM1, NUS','Hort Park','Telok Blangah Market','Mount Faber Park','Chinatown','Chinatown Complex Food Centre',
     #      'National Museum', 'Wild Wild Wet', 'Jewel Changi Airport Manulife Sky Nets - Walking', 'Jewel Changi Airport Canopy Park',
     #     'Pulau Ubin and Chek Jawa']
     # avail_time=8
 
-    # to chun han: rec_output is the input of this module
-    with open(r'C:\Users\I544708\Desktop\CC\project\location_list.json') as f:
-        rec_output_dict = json.load(f)
+    # # to chun han: rec_output is the input of this module
+    # with open(r'C:\Users\I544708\Desktop\CC\project\location_list.json') as f:
+    #     rec_output_dict = json.load(f)
+
     avail_time=int(rec_output_dict['time_stay'])
     poi_seg=rec_output_dict.popitem()
     poi_list=poi_seg[1]
@@ -269,8 +271,38 @@ def map():
 def home():
     return "<h1>Hello World</h1>"
 
+def on_request(ch, method, props, body):
+
+    msg = dict(body)
+
+    # print(" [.] fib(%s)" % n)
+    response = optimisation(msg)
+
+    ch.basic_publish(exchange='',
+                     routing_key=props.reply_to,
+                     properties=pika.BasicProperties(correlation_id = \
+                                                         props.correlation_id),
+                     body=str(response))
+    ch.basic_ack(delivery_tag=method.delivery_tag)
+
 # entrance
 if __name__=='__main__':
     # app.run(host='0.0.0.0',port=8080)
+
+    parameters = pika.URLParameters('amqps://Administrator:administrator12345@b-92f0f3f3-0fa2-4e56-b884-b2bce26b0222.mq.us-east-1.amazonaws.com:5671/%2f')
+    connection = pika.BlockingConnection(parameters)
+
+    channel = connection.channel()
+
+    channel.queue_declare(queue='optimisation_recommendation')
+
+    channel.basic_qos(prefetch_count=1)
+    channel.basic_consume(queue='optimisation_recommendation', on_message_callback=on_request)
+
+    print(" [x] Awaiting RPC requests")
+    channel.start_consuming()  
+
     app.run(debug=True)
+
+
     # host='0.0.0.0',port=8080
