@@ -229,12 +229,12 @@ class Recommendation(object):
             ),
             body=str(n))
 
-        print(" [.] Requesting for fib(%s) to Optimisation Server" % n)
+        print(" [.] Request consisting {} sent to Optimisation Server".format(body.decode()))
 
         while self.response is None:
             self.connection2.process_data_events()
 
-        print(' [.] Response received! Relaying to frontend now...')
+        print(' [.] Response received! Response is: {} Relaying to frontend now...'.format(self.response.decode()))
 
         return str(self.response)
 
@@ -254,6 +254,8 @@ if __name__ == '__main__':
     # print(location_list)
     recommendation = Recommendation()
     recommendation.channel1.start_consuming()
+
+    print(" [x] Awaiting RPC requests")
 
     optimization_dict = demo_recommendation(1,'COM1, NUS',8,'2021-4-10')
     with open('location_list.json','w') as f:
