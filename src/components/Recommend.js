@@ -6,31 +6,36 @@ function Recommend() {
   let history = useHistory();
 
   const [recState, setRecState] = useState({
+    userid: 1234,
     startDate: "2021-03-31T15:30",
-    travelLength: 1,
+    travelLength: 8,
     location: 117417,
   });
 
   const startDateHandler = (event) => {
-    setRecState({
+    setRecState(prevState => ({
+      ...prevState,
       startDate: event.target.value,
-    });
+    }));
   };
 
   const travelLengthHandler = (event) => {
-    setRecState({
+    setRecState(prevState => ({
+      ...prevState,
       travelLength: event.target.value,
-    });
+    }));
   };
 
   const locationHandler = (event) => {
-    setRecState({
+    setRecState(prevState => ({
+      ...prevState,
       location: event.target.value,
-    });
+    }));
   };
 
   const recommendSubmit = (event) => {
     event.preventDefault();
+    console.log(recState);
     fetch("/api/recommend", {
       method: "POST",
       body: JSON.stringify({

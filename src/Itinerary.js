@@ -65,25 +65,25 @@ function Itinerary() {
             </button>
           </div>
           {travelPlan.map((plan) => {
-            if (plan.id % 2 === 1) {
+            if (plan.order % 2 === 1) {
               return (
                 <LeftCard
-                  key={plan.id}
+                  key={plan.order}
                   picture={plan.picture}
-                  name={plan.name}
-                  travelTime={plan.travelTime}
-                  spendTime={plan.spendTime}
+                  name={plan.poi_name}
+                  travelTime={plan.time_to_travelhere}
+                  spendTime={plan.time_to_spend}
                   description={plan.description}
                 />
               );
             } else {
               return (
                 <RightCard
-                  key={plan.id}
+                  key={plan.order}
                   picture={plan.picture}
-                  name={plan.name}
-                  travelTime={plan.travelTime}
-                  spendTime={plan.spendTime}
+                  name={plan.poi_name}
+                  travelTime={plan.time_to_travelhere}
+                  spendTime={plan.time_to_spend}
                   description={plan.description}
                 />
               );
