@@ -197,12 +197,12 @@ class Recommendation(object):
         return optimization_dict
 
     def on_request(self, ch, method, props, body):
-        msg = dict(body)
+        msg = eval(body.decode())['content']
 
         userid = msg['userid']
-        start_loc = msg['start_loc']
-        time_stay = msg['time_stay']
-        start_time = msg['start_time']
+        start_loc = msg['location']
+        time_stay = msg['travelLength']
+        start_time = msg['startDate']
 
         next_msg = self.demo_recommendation(userid, start_loc, time_stay, start_time)
 
