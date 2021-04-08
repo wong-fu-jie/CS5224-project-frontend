@@ -12,10 +12,12 @@ function RightCard(props) {
         <div>
           <label className="text bold">Travel Time:</label>
           <label className="text bold">{props.travelTime}</label>
+          <label className="text">hrs:mins:secs</label>
         </div>
         <div>
           <label className="text bold">Time to Spend Here:</label>
           <label className="text bold">{props.spendTime}</label>
+          <label className="text">Hours</label>
         </div>
         <div className="text">
           <p>{props.description}</p>

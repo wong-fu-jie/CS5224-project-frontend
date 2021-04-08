@@ -64,6 +64,13 @@ def home():
     return "ok"
 
 
+@ app.route('/api')
+def clearSession():
+    session['itinerary'] = []
+    session['loading'] = 'yes'
+    return {'200': 'Sessions reset'}
+
+
 @ app.route('/api/time', methods=['GET'])
 def get_current_time():
     return {'time': time.time()}

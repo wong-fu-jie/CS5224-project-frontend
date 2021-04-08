@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 
 function Login() {
+  useEffect(() => {
+    fetch("/api")
+    .then((response) => response.json())
+    .then(message => console.log(message));
+  });
+
   const loginHandler = (event) => {
     event.preventDefault();
     alert("Loging You In!");

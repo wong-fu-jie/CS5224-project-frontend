@@ -42,7 +42,7 @@
     ]
   },
 
-  "proxy": "http://localhost:5000",
+  "proxy": "http://projectdd-env.eba-ny7u22vm.us-east-1.elasticbeanstalk.com",
 
   "comments": {
     "proxy-local": "http://localhost:5000",
