@@ -8,18 +8,12 @@ import pandas as pd
 import pika
 import uuid
 
-# # initialise app
-# app=Flask(__name__)
 
 # @app.route("/recommendation",methods=['GET','POST'])
 # def recommend():
 #     location_list = get_recommendation(1)
 #     j_file = json.dumps(location_list.to_dict('records'))
 #     return j_file
-
-# @app.route("/")
-# def home():
-#     return "<h1>Hello World</h1>"
 
 class Recommendation(object):
 
@@ -105,7 +99,7 @@ class Recommendation(object):
         '''
         sim_list = []
         for user_profile in user_item_list:
-            pearson_sim = get_similarity(vector,user_profile)
+            pearson_sim = self.get_similarity(vector,user_profile)
             sim_list.append(pearson_sim)
         return sim_list
 
@@ -114,7 +108,7 @@ class Recommendation(object):
         generate user feature matrix containing user's rating for POI and user's profile
         return: dataframe for users' profile and user feature matrix
         '''
-        engine = db_init()
+        engine = self.db_init()
         postgreSQL_select_Query = 'select * from review'
         review_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
         postgreSQL_select_Query = 'select * from user_profile'
@@ -147,15 +141,19 @@ class Recommendation(object):
             start_time: start time of trip
         return: dictionary of containing recommended POIs and the parameters for optimization
         '''
-        profile_df, user_item = get_user_feature_matrix(userid)
+        profile_df, user_item = self.get_user_feature_matrix(userid)
+        # compute the average rating for each user
+        user_avg_rating = user_item[[i for i in user_item.columns if i.startswith('002')]].mean(1)
         # feature for user to get recommendation
         current_user_feature = user_item.loc[userid].tolist()
+        current_user_rating = user_avg_rating[userid]
         # exclude the current user from the user item matrix
         user_item = user_item.loc[[i for i in user_item.index if i!=userid]]
         user_item_list = user_item.values.tolist()
         # get pearson similarity between the user and others
-        sim_list = get_sim_list(current_user_feature,user_item_list)
+        sim_list = self.get_sim_list(current_user_feature,user_item_list)
         user_item['similarity'] = sim_list
+        user_item['user_avg_rating'] = user_avg_rating
         # get top 50 similar users
         similar_users = user_item.sort_values('similarity',ascending=False).head(50)
         similar_users = similar_users.dropna(axis=1,how='all')
@@ -164,8 +162,8 @@ class Recommendation(object):
         candidate_poi = [i for i in similar_users.columns if i.startswith('002')]
         poi_rating = {}
         for poi in candidate_poi:
-            current_poi_df = similar_users[[poi,'similarity']].dropna()
-            current_rating = (current_poi_df[poi]*current_poi_df['similarity']).sum()/current_poi_df['similarity'].sum()
+            current_poi_df = similar_users[[poi,'similarity','user_avg_rating']].dropna()
+            current_rating = current_user_rating + ((current_poi_df[poi]-current_poi_df['user_avg_rating'])*current_poi_df['similarity']).sum()/current_poi_df['similarity'].sum()
             poi_rating[poi] = current_rating
         recommended_places = [(k, v) for k, v in sorted(poi_rating.items(), key=lambda item: -item[1])]
         # return the 10 recommended places with highest predict rating
@@ -174,7 +172,7 @@ class Recommendation(object):
             recommended_places = [i[0] for i in recommended_places]
         else:
             recommended_places = [i[0] for i in recommended_places]
-        engine = db_init()
+        engine = self.db_init()
         postgreSQL_select_Query = 'select * from attraction'
         attraction_df = sqlio.read_sql_query(postgreSQL_select_Query, engine)
         recommended_df = attraction_df[attraction_df['uuid'].isin(recommended_places)]
@@ -197,6 +195,7 @@ class Recommendation(object):
         return optimization_dict
 
     def on_request(self, ch, method, props, body):
+        print(body.decode())
         msg = eval(body.decode())['content']
 
         userid = msg['userid']
@@ -249,14 +248,26 @@ class Recommendation(object):
 # if __name__=='__main__':
 #     app.run(debug=True)
 
+app=Flask(__name__)
+
+@app.route("/")
+def home():
+    return "<h1>Hello World</h1>"
+
+
 if __name__ == '__main__':
     # location_list = get_recommendation(1,1,1,1)
     # print(location_list)
+    app.run(host='0.0.0.0', port=5001)
     recommendation = Recommendation()
     recommendation.channel1.start_consuming()
 
     print(" [x] Awaiting RPC requests")
+    #
+    # optimization_dict = demo_recommendation(1,'COM1, NUS',8,'2021-4-10')
+    # with open('location_list.json','w') as f:
+    #     json.dump(optimization_dict,f)
 
-    optimization_dict = demo_recommendation(1,'COM1, NUS',8,'2021-4-10')
-    with open('location_list.json','w') as f:
-        json.dump(optimization_dict,f)
+# if __name__ == '__main__':
+#     recommendation = Recommendation()
+#     print(recommendation.get_recommendation(1,1,1,1))
